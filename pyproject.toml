@@ -1,6 +1,6 @@
 [project]
 name="deepl-translator-cli"
-version = "0.1.8"
+version = "0.1.9"
 description = ""
 authors = [
     {name = "Vinicius Krauspenhar",email = "viniciuskr@gmail.com"}

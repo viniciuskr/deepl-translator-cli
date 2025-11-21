@@ -7,6 +7,7 @@ A simple command-line interface (CLI) tool to translate text using the DeepL API
 - Translate text directly from the command line
 - Default translation from Brazilian Portuguese (`PT-BR`) to American English (`EN-US`)
 - Override source and target languages with command options
+- **Grammar Correction**: Automatically correct English grammar when source is set to `EN`, `EN-US`, or `EN-GB`
 
 ## Requirements
 
@@ -47,6 +48,15 @@ Override languages:
 
 ```bash
 poetry run deepl-cli "bonjour" --source FR --target EN-GB
+```
+
+### Grammar Correction
+
+Use the `-r` or `--review` flag to perform grammar correction (assumes English input):
+
+```bash
+poetry run deepl-cli "I has a apple" -r
+# Output: I have an apple
 ```
 
 ## Building the Package

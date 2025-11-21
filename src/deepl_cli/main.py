@@ -17,12 +17,13 @@ def translate(
     text: str = typer.Argument(..., help="Text to be translated"),
     source: str = typer.Option(None, help="Source language (default: auto-detect)"),
     target: str = typer.Option("EN-US", help="Target language (default: EN-US)"),
+    review: bool = typer.Option(False, "--review", "-r", help="Review and correct grammar (assumes English input)"),
 ):
     """
     Translate text using DeepL API.
     """
-    # Check for English source to perform grammar correction
-    if source and source.upper() in ["EN", "EN-US", "EN-GB"]:
+    # Check for review flag to perform grammar correction
+    if review:
         try:
             tool = language_tool_python.LanguageTool('en-US')
             matches = tool.check(text)
@@ -31,9 +32,6 @@ def translate(
             return
         except Exception as e:
             typer.echo(f"Grammar check failed: {e}", err=True)
-            # Fallback to translation if grammar check fails? Or just exit?
-            # For now, let's exit to be safe, or we could proceed to translation if user intended that.
-            # But user request was specific about "review... and return corrections".
             raise typer.Exit(code=1)
 
     api_key = os.getenv("DEEPL_API_KEY")
