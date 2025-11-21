@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "CLI: Translate with DeepL",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/deepl_cli/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "${input:textToTranslate}"
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "textToTranslate",
+            "description": "Text that will be sent to DeepL",
+            "type": "promptString",
+            "default": "Olá, tudo bem?"
+        }
+    ]
+}

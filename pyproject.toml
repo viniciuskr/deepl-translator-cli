@@ -1,0 +1,25 @@
+[project]
+name="deepl-translator-cli"
+version = "0.1.8"
+description = ""
+authors = [
+    {name = "Vinicius Krauspenhar",email = "viniciuskr@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "typer (>=0.20.0,<0.21.0)",
+    "deepl (>=1.25.0,<2.0.0)",
+    "python-dotenv (>=1.2.1,<2.0.0)",
+    "language-tool-python (>=3.0.0,<4.0.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project.scripts]
+deepl-cli = "deepl_cli.main:app"
+
+[tool.poetry]
+packages = [{include = "deepl_cli", from = "src"}]
